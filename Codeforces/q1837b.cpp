@@ -7,28 +7,20 @@
 using namespace std;
 void solve()
 {
+    string s;
     int n;
-    cin >> n;
-    vl a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == 1)
-            a[i]++;
-    }
+    cin >> n >> s;
+    int ans = 1;
+    int cnt = 1;
     for (int i = 1; i < n; i++)
     {
-        if (a[i] % a[i - 1] == 0)
-            a[i]++;
+        if (s[i] != s[i - 1])
+            cnt = 1;
+        else
+            cnt++;
+        ans = max(ans, cnt);
     }
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << " ";
-    }
-    cout<<endl;
+    cout << ans + 1 << endl;
 }
 int main()
 {

@@ -7,28 +7,18 @@
 using namespace std;
 void solve()
 {
-    int n;
-    cin >> n;
-    vl a(n);
-    for (int i = 0; i < n; i++)
+    vi a(3);
+    for (int i = 0; i < 3; i++)
     {
         cin >> a[i];
     }
-    for (int i = 0; i < n; i++)
+    sort(a.begin(), a.end());
+    for (int i = 0; i < 5; i++)
     {
-        if (a[i] == 1)
-            a[i]++;
+        a[0]++;
+        sort(a.begin(), a.end());
     }
-    for (int i = 1; i < n; i++)
-    {
-        if (a[i] % a[i - 1] == 0)
-            a[i]++;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << " ";
-    }
-    cout<<endl;
+    cout << a[0] * a[1] * a[2] << endl;
 }
 int main()
 {

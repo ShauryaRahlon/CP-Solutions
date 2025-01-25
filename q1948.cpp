@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define ll long long
 #define vi vector<int>
 #define vl vector<long long>
@@ -8,34 +8,33 @@ using namespace std;
 void solve()
 {
     int n;
-    cin >> n;
-    vl a(n);
-    for (int i = 0; i < n; i++)
+    cin>>n;
+    if(n==1)
     {
-        cin >> a[i];
+        cout<<"NO"<<endl;
+        return;
+    }
+    if(n==2)
+    {
+        cout<<"AA"<<endl;
+        return;
     }
     for (int i = 0; i < n; i++)
     {
-        if (a[i] == 1)
-            a[i]++;
+        if(i==n/2)
+        cout<<"B";
+        else
+        cout<<"A";
     }
-    for (int i = 1; i < n; i++)
-    {
-        if (a[i] % a[i - 1] == 0)
-            a[i]++;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << " ";
-    }
-    cout<<endl;
+    cout<<"\n";
+    
 }
 int main()
 {
     FAST_IO;
     int t;
-    cin >> t;
-    while (t--)
+    cin>>t;
+    while(t--)
     {
         solve();
     }

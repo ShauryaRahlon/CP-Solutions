@@ -5,30 +5,23 @@
 #define pb push_back
 #define FAST_IO ios_base::sync_with_stdio(false), cin.tie(nullptr), cerr.tie(nullptr)
 using namespace std;
+
 void solve()
 {
-    int n;
-    cin >> n;
-    vl a(n);
-    for (int i = 0; i < n; i++)
+    int n, k;
+    cin >> n >> k;
+    if (k == 1)
     {
-        cin >> a[i];
+        cout << n << endl;
+        return;
     }
-    for (int i = 0; i < n; i++)
+    int cnt = 0;
+    while (n)
     {
-        if (a[i] == 1)
-            a[i]++;
+        cnt += n % k;
+        n /= k;
     }
-    for (int i = 1; i < n; i++)
-    {
-        if (a[i] % a[i - 1] == 0)
-            a[i]++;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << " ";
-    }
-    cout<<endl;
+    cout << cnt << endl;
 }
 int main()
 {
