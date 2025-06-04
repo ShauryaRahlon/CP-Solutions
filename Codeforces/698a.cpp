@@ -29,7 +29,7 @@ int solve(vi &nums, int i, int prev) {
     if (i >= nums.size())
         return 0;
     
-    int ans = 0;//this is check
+    int ans = 0
     
     if (nums[i] == 0) {
         ans =1+ solve(nums, i + 1, 0);
