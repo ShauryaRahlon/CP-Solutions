@@ -1,4 +1,4 @@
-        #include<bits/stdc++.h>
+#include<bits/stdc++.h>
 /*------------------------- Type Defs ----------------------*/
 typedef long long ll;
 typedef unsigned long long ull;
@@ -26,48 +26,70 @@ template <typename T> inline bool isPrime(T n){for (T i=2;i*i<=n;i++) if(n%i==0)
 template <typename T> inline T Power_MOD(T a,T b){T res=1;while(b>0){if(b&1)res=(res*a)%MOD;a=(a*a)%MOD;b>>=1;}return res;}
 template <typename T> inline T Power(T a,T b){long long res=1;while(b>0){if(b&1){res=res*a;}a*=a;b>>=1;}return res;}
 
+
+
 using namespace std;
-
-int solve(int n, int a, int b, int c) {
-    if (n == 0) return 0; // exact cut
-    if (n < 0) return INT_MIN; // invalid cut
-    
-    int ca = solve(n - a, a, b, c);
-    int cb = solve(n - b, a, b, c);
-    int cc = solve(n - c, a, b, c);
-
-    int res = max({ca, cb, cc});
-    
-    if (res == INT_MIN) return INT_MIN; // no valid cuts
-    return res + 1; // one valid cut added
+vector<int>m3(vector<int>&a)
+{
+    vector<pair<int,int>>pq(a.size());//element idx
+    for(int i=0;i<a.size();++i)
+    {
+        pq[i].first=a[i];
+        pq[i].second=i;
+    }
+    sort(pq.rbegin(),pq.rend());
+    vi ans(3);
+    for(int i=0;i<3;++i)
+        ans[i]=pq[i].second;
+    return ans;
 }
-int solveMemo(int n, int a, int b, int c, vector<int>& dp) {
-    if (n == 0) return 0;         // Perfectly cut
-    if (n < 0) return INT_MIN;    // Invalid cut
-    if (dp[n] != -1) return dp[n]; // Already computed
-
-    int ca = solveMemo(n - a, a, b, c, dp);
-    int cb = solveMemo(n - b, a, b, c, dp);
-    int cc = solveMemo(n - c, a, b, c, dp);
-
-    int res = max({ca, cb, cc});
-    if (res == INT_MIN) return dp[n] = INT_MIN;
-
-    return dp[n] = res + 1;
+void solve()
+{
+    int n;
+    cin>>n;
+    vi a(n);
+    vi b(n);
+    vi c(n);
+    read(a);
+    read(b);
+    read(c);
+    
+    
+    vi ma=m3(a);
+    vi mb=m3(b);
+    vi mc=m3(c);
+    int ans=0;
+    for(int i=0;i<3;++i)
+        for(int j=0;j<3;++j)
+            for(int k=0;k<3;++k)
+            {
+                int x=ma[i];
+                int y=mb[j];
+                int z=mc[k];
+                if(x==y or x==z or y==z)
+                    continue;
+                ans=max(ans,a[x]+b[y]+c[z]);
+            }
+    p(ans);
+            
 }
-
-int main() {
+int main()
+{
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    freopen("output1.txt", "w", stdout); 
+    freopen("output.txt", "w", stdout); 
     #endif
-    FAST_IO;
-
-    int n, a, b, c;
-    cin >> n >> a >> b >> c;
-
-    vector<int> dp(n + 1, -1);
-    int ans = solveMemo(n, a, b, c, dp);
     
-    cout<<(ans < 0 ? 0 : ans);
+    clock_t T = clock();
+    FAST_IO;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+    
+    #ifndef ONLINE_JUDGE
+    cout << "\nTime taken: " << ((float)(clock() - T)) / CLOCKS_PER_SEC << " seconds";
+    #endif
 }

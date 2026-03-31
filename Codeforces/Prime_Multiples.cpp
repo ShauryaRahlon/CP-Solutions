@@ -8,39 +8,19 @@
 #define rloop(i, m, n) for (int i = n; i >= m; i--)
 #define FAST_IO ios_base::sync_with_stdio(false), cin.tie(nullptr), cerr.tie(nullptr)
 using namespace std;
-
+const int mod = 1e9 + 7;
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-    vl a(n);
-
-    ll sum = 0, cnt1 = 0;
-    for (int i = 0; i < n; ++i)
-    {
-        cin >> a[i];
-        sum += a[i];
-        if (a[i] == 1)
-            cnt1++;
-    }
-
-    if (n == 1)
-    {
-        cout << "NO\n";
-        return;
-    }
-
-    if (sum >= n + cnt1)
-        cout << "YES\n";
-    else
-        cout << "NO\n";
+    n--;
+    cout << n * n << endl;
 }
-
 int main()
 {
     FAST_IO;
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin>>t;
     while (t--)
     {
         solve();

@@ -1,0 +1,1 @@
+{"name":"Local: news","url":"c:\\Users\\91790\\Desktop\\dsa codes\\Codeforces\\Codeforces\\news.cpp","tests":[{"id":1756048412281,"input":"3\n3 4\n2 8\n123 123","output":"81\n256\n921450052"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91790\\Desktop\\dsa codes\\Codeforces\\Codeforces\\news.cpp","group":"local","local":true}
